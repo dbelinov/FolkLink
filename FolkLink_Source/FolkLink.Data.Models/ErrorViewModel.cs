@@ -1,4 +1,4 @@
-namespace FolkLink.Web.Models;
+namespace FolkLink.Data.Models;
 
 public class ErrorViewModel
 {

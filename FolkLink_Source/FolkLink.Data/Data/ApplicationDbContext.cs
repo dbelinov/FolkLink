@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FolkLink.Web.Data;
+namespace FolkLink.Data.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {

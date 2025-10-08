@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolkLink.Web", "FolkLink.Web\FolkLink.Web.csproj", "{7BC101DB-C3FC-4556-B396-BCAF342DDFEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolkLink.Data", "FolkLink.Data\FolkLink.Data.csproj", "{431E4DE2-E336-4BD6-B724-35734E7FFD9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolkLink.Data.Models", "FolkLink.Data.Models\FolkLink.Data.Models.csproj", "{460BED3B-CDB5-4C91-B591-89542541D2D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{7BC101DB-C3FC-4556-B396-BCAF342DDFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC101DB-C3FC-4556-B396-BCAF342DDFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC101DB-C3FC-4556-B396-BCAF342DDFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{431E4DE2-E336-4BD6-B724-35734E7FFD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{431E4DE2-E336-4BD6-B724-35734E7FFD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{431E4DE2-E336-4BD6-B724-35734E7FFD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{431E4DE2-E336-4BD6-B724-35734E7FFD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{460BED3B-CDB5-4C91-B591-89542541D2D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{460BED3B-CDB5-4C91-B591-89542541D2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{460BED3B-CDB5-4C91-B591-89542541D2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{460BED3B-CDB5-4C91-B591-89542541D2D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

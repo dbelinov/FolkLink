@@ -1,6 +1,6 @@
+using FolkLink.Data.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using FolkLink.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

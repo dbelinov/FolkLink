@@ -2,3 +2,7 @@
 FolkLink_Source/.idea
 FolkLink_Source/FolkLink.Web/obj
 FolkLink_Source/FolkLink.Web/bin
+FolkLink_Source/FolkLink.Data/obj
+FolkLink_Source/FolkLink.Data/bin
+FolkLink_Source/FolkLink.Data.Models/obj
+FolkLink_Source/FolkLink.Data.Models/bin

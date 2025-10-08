@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using FolkLink.Web.Models;
+using FolkLink.Data.Models;
 
 namespace FolkLink.Web.Controllers;
 
