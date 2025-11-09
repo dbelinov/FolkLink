@@ -13,4 +13,5 @@ public class ApplicationDbContext : IdentityDbContext
     
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Club> Clubs { get; set; }
+    public DbSet<Member> Members { get; set; }
 }

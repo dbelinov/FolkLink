@@ -6,6 +6,11 @@ namespace FolkLink.Data.Models;
 
 public class Club
 {
+    public Club()
+    {
+        Members = new HashSet<Member>();
+    }
+    
     [Required]
     public Guid Id { get; set; }
     
@@ -23,4 +28,6 @@ public class Club
     [Required]
     [ForeignKey(nameof(OwnerId))]
     public Owner Owner { get; set; }
+    
+    public ICollection<Member> Members { get; set; }
 }

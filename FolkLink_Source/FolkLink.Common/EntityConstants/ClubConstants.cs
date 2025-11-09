@@ -1,6 +1,6 @@
 namespace FolkLink.Common.EntityConstants;
 
-public class ClubConstants
+public static class ClubConstants
 {
     public const int NameMaxLength = 50;
     public const int AddressMaxLength = 100;

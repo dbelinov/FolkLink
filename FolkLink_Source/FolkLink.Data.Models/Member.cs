@@ -1,0 +1,34 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using static FolkLink.Common.EntityConstants.MemberConstants;
+
+namespace FolkLink.Data.Models;
+
+public class Member
+{
+    [Required]
+    public Guid Id { get; set; }
+    [Required]
+    [MaxLength(FirstNameMaxLength)]
+    public string FirstName { get; set; }
+    [Required]
+    [MaxLength(MiddleNameMaxLength)]
+    public string MiddleName { get; set; }
+    [Required]
+    [MaxLength(LastNameMaxLength)]
+    public string LastName { get; set; }
+    [Required]
+    [DataType(DataType.Date)]
+    public DateTime BirthDate { get; set; }
+    [Required]
+    [MaxLength(PhoneNumberMaxLength)]
+    [Phone]
+    public string PhoneNumber { get; set; }
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+    [Required]
+    public Guid ClubId { get; set; }
+    [ForeignKey(nameof(ClubId))]
+    public Club Club { get; set; }
+}
