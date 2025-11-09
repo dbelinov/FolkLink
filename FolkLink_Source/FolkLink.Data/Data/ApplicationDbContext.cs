@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FolkLink.Data.Models;
 
 namespace FolkLink.Data.Data;
 
@@ -9,4 +10,7 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+    
+    public DbSet<Owner> Owners { get; set; }
+    public DbSet<Club> Clubs { get; set; }
 }
