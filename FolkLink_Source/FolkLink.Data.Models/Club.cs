@@ -24,7 +24,7 @@ public class Club
     [Range(MemberCapacityMinValue, MemberCapacityMaxValue)]
     public int MemberCapacity { get; set; }
     [Required] 
-    public int OwnerId { get; set; }
+    public Guid OwnerId { get; set; }
     [Required]
     [ForeignKey(nameof(OwnerId))]
     public Owner Owner { get; set; }

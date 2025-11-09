@@ -1,4 +1,4 @@
-using FolkLink.Data.Data;
+using FolkLink.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

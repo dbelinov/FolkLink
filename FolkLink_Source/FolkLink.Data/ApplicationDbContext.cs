@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FolkLink.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using FolkLink.Data.Models;
 
-namespace FolkLink.Data.Data;
+namespace FolkLink.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
