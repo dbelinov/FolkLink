@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\FolkLink.Common\FolkLink.Common.csproj" />
-    </ItemGroup>
-
 </Project>
