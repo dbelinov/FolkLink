@@ -12,22 +12,27 @@ public class Owner
     }
     [Required]
     public Guid Id { get; set; }
+    
     [Required]
     [MaxLength(FirstNameMaxLength)]
     public string FirstName { get; set; }
     [Required]
     [MaxLength(MiddleNameMaxLength)]
     public string MiddleName { get; set; }
+    
     [Required]
     [MaxLength(LastNameMaxLength)]
     public string LastName { get; set; }
+    
     [Required]
     [DataType(DataType.Date)]
     public DateTime BirthDate { get; set; }
+    
     [Required]
     [EmailAddress]
     [MaxLength(EmailMaxLength)]
     public string Email { get; set; }
+    
     [Required]
     [MaxLength(PhoneNumberMaxLength)]
     [Phone]

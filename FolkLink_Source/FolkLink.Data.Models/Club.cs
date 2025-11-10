@@ -17,14 +17,18 @@ public class Club
     [Required]
     [MaxLength(NameMaxLength)]
     public string Name { get; set; }
+    
     [Required]
     [MaxLength(AddressMaxLength)]
     public string Address { get; set; }
+    
     [Required]
     [Range(MemberCapacityMinValue, MemberCapacityMaxValue)]
     public int MemberCapacity { get; set; }
+    
     [Required] 
     public Guid OwnerId { get; set; }
+    
     [Required]
     [ForeignKey(nameof(OwnerId))]
     public Owner Owner { get; set; }
