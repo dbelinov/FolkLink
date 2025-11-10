@@ -1,99 +1,52 @@
-﻿@*
-          File: `FolkLink.Web/Views/Shared/_Layout.cshtml`
-        *@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>@ViewData["Title"] - ФолкЛинк</title>
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-            <link rel="stylesheet" href="~/FolkLink.Web.styles.css" asp-append-version="true"/>
-        
-            <style>
-                /* navbar: translucent dark so it's not white */
-                .navbar-custom {
-                    background-color: rgba(10, 10, 10, 0.48);
-                    -webkit-backdrop-filter: blur(6px);
-                    backdrop-filter: blur(6px);
-                    box-shadow: 0 1px 0 rgba(0,0,0,0.12);
-                    border-bottom: 1px solid rgba(255,255,255,0.03);
-                }
-                .navbar-custom .navbar-brand {
-                    color: #fff;
-                    font-weight: 600;
-                }
-                .navbar-custom .nav-link {
-                    color: rgba(255,255,255,0.92);
-                }
-                .navbar-custom .nav-link:hover,
-                .navbar-custom .nav-link:focus {
-                    color: #fff;
-                }
-        
-                /* footer spacing and appearance */
-                footer.footer {
-                    padding: 1.25rem 0;
-                    background: transparent;
-                    color: rgba(0,0,0,0.65);
-                }
-        
-                /* ensure main content has comfortable max width */
-                .app-container .content-inner {
-                    max-width: 980px;
-                    margin: 0 auto;
-                }
-        
-                /* responsive tweak for smaller screens */
-                @@media (max-width: 576px) {
-                    .app-container {
-                        padding: 1rem;
-                        margin-top: 1rem;
-                        margin-bottom: 1rem;
-                    }
-                }
-            </style>
-        </head>
-        <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark navbar-custom sticky-top">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ФолкЛинк</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                            aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial"/>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        
-        <div class="container">
-            <div class="app-container">
-                <main role="main" class="pb-3 content-inner">
-                    @RenderBody()
-                </main>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - ФолкЛинк</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/FolkLink.Web.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ФолкЛинк</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
+                    </li>
+                </ul>
+                <partial name="_LoginPartial"/>
             </div>
         </div>
-        
-        <footer class="border-top footer text-muted">
-            <div class="container text-center">
-                &copy; @DateTime.Now.Year - ФолкЛинк
-            </div>
-        </footer>
-        
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-        </body>
-        </html>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="app-container">
+        <main role="main" class="pb-3 content-inner">
+            @RenderBody()
+        </main>
+    </div>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container text-center">
+        &copy; @DateTime.Now.Year - ФолкЛинк
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

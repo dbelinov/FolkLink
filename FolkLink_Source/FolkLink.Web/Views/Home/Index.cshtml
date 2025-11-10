@@ -1,128 +1,18 @@
 ﻿@{
-        ViewData["Title"] = "Начало";
-        }
-        
-        <style>
-            /* Full-screen background */
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: "Segoe UI", sans-serif;
-                color: white;
-                background: url('@Url.Content("~/images/folk-bg.png")') no-repeat center center fixed;
-                background-size: cover;
-                min-height: 100vh;
-            }
-        
-            /* Overlay BELOW nav and ABOVE background */
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.55);
-                z-index: -1;
-            }
-        
-            /* Centered content */
-            .content {
-                position: relative;
-                z-index: 1;
-                min-height: calc(100vh - 100px);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 2rem;
-            }
-        
-            /* start hidden so animation is visible */
-            h1, .subtitle {
-                opacity: 0;
-            }
-        
-            h1 {
-                font-size: 3.5rem;
-                font-weight: 700;
-                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-                margin-bottom: 20px;
-        
-                /* animation */
-                animation-name: fadeInUp;
-                animation-duration: 900ms;
-                animation-timing-function: cubic-bezier(.16,.84,.44,1);
-                animation-delay: 200ms;
-                animation-fill-mode: forwards; /* keep the final state */
-                -webkit-animation-name: fadeInUp;
-                -webkit-animation-duration: 900ms;
-                -webkit-animation-timing-function: cubic-bezier(.16,.84,.44,1);
-                -webkit-animation-delay: 200ms;
-                -webkit-animation-fill-mode: forwards;
-            }
-        
-            .subtitle {
-                font-size: 1.25rem;
-                color: #f0f0f0;
-                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-        
-                /* slightly slower, later animation */
-                animation-name: fadeInUp;
-                animation-duration: 1100ms;
-                animation-timing-function: cubic-bezier(.16,.84,.44,1);
-                animation-delay: 500ms;
-                animation-fill-mode: forwards;
-                -webkit-animation-name: fadeInUp;
-                -webkit-animation-duration: 1100ms;
-                -webkit-animation-timing-function: cubic-bezier(.16,.84,.44,1);
-                -webkit-animation-delay: 500ms;
-                -webkit-animation-fill-mode: forwards;
-            }
-        
-            /* Keyframes (standard + -webkit for Safari) */
-            @@keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(14px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        
-            @@-webkit-keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    -webkit-transform: translateY(14px);
-                }
-                to {
-                    opacity: 1;
-                    -webkit-transform: translateY(0);
-                }
-            }
-        
-            /* Respect user preference for reduced motion */
-            @@media (prefers-reduced-motion: reduce) {
-            h1, .subtitle {
-                animation: none !important;
-                -webkit-animation: none !important;
-                opacity: 1 !important; /* ensure content visible */
-                transform: none !important;
-            }
-            }
-        
-            /* small screen adjustments */
-            @@media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            }
-        </style>
-        
-        <div class="overlay"></div>
-        
-        <div class="content">
-            <h1>Добре дошли във ФолкЛинк!</h1>
-            <p class="subtitle">Връзка чрез фолклора</p>
-        </div>
+    ViewData["Title"] = "Начало";
+}
+
+<div class="overlay"></div>
+
+<div class="content">
+    <h1>Добре дошли във ФолкЛинк!</h1>
+    <p class="subtitle">Връзка чрез фолклора</p>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('index-hero');
+        });
+    </script>
+}
