@@ -1,6 +1,6 @@
 namespace FolkLink.Common.EntityConstants;
 
-public static class OwnerConstants
+public static class UserConstants
 {
     public const int FirstNameMaxLength = 40;
     public const int MiddleNameMaxLength = 40;

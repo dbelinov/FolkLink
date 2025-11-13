@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static FolkLink.Common.EntityConstants.MemberConstants;
+
+using static FolkLink.Common.EntityConstants.UserConstants;
 
 namespace FolkLink.Data.Models;
 
