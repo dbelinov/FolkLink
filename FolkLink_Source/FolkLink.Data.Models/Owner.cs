@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 using static FolkLink.Common.EntityConstants.UserConstants;
 
 namespace FolkLink.Data.Models;
@@ -38,5 +38,9 @@ public class Owner
     [MaxLength(PhoneNumberMaxLength)]
     [Phone]
     public string PhoneNumber { get; set; }
+
+    public Guid UserId { get; set; }
+    [ForeignKey(nameof(UserId))]
+    public virtual ApplicationUser User { get; set; }
     public ICollection<Club> Clubs { get; set; }
 }

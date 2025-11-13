@@ -10,4 +10,8 @@
       <ProjectReference Include="..\FolkLink.Common\FolkLink.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.22" />
+    </ItemGroup>
+
 </Project>

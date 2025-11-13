@@ -45,4 +45,8 @@ public class Member
     
     [ForeignKey(nameof(GroupId))]
     public virtual Group Group { get; set; }
+
+    public Guid UserId { get; set; }
+    [ForeignKey(nameof(UserId))]
+    public virtual ApplicationUser User { get; set; }
 }
