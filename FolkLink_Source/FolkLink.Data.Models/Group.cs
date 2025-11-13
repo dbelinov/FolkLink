@@ -25,6 +25,6 @@ public class Group
     [Required]
     public int ClubId { get; set; }
     [ForeignKey(nameof(ClubId))]
-    public Club Club { get; set; }
+    public virtual Club Club { get; set; }
     public ICollection<Member> Members { get; set; }
 }

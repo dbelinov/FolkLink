@@ -44,5 +44,5 @@ public class Member
     public int GroupId { get; set; }
     
     [ForeignKey(nameof(GroupId))]
-    public Group Group { get; set; }
+    public virtual Group Group { get; set; }
 }

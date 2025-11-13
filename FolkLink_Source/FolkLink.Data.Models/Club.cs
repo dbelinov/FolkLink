@@ -30,7 +30,7 @@ public class Club
     
     [Required]
     [ForeignKey(nameof(OwnerId))]
-    public Owner Owner { get; set; }
+    public virtual Owner Owner { get; set; }
     
     public ICollection<Group> Groups { get; set; }
 }
