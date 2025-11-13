@@ -8,9 +8,10 @@ public class Owner
 {
     public Owner()
     {
+        Id = Guid.NewGuid();
         Clubs = new HashSet<Club>();
     }
-    [Required]
+    [Key]
     public Guid Id { get; set; }
     
     [Required]

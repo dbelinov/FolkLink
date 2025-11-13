@@ -7,7 +7,12 @@ namespace FolkLink.Data.Models;
 
 public class Member
 {
-    [Required]
+    public Member()
+    {
+        Id = Guid.NewGuid();
+    }
+    
+    [Key]
     public Guid Id { get; set; }
     
     [Required]
@@ -36,8 +41,8 @@ public class Member
     public string Email { get; set; }
     
     [Required]
-    public Guid ClubId { get; set; }
+    public int GroupId { get; set; }
     
-    [ForeignKey(nameof(ClubId))]
-    public Club Club { get; set; }
+    [ForeignKey(nameof(GroupId))]
+    public Group Group { get; set; }
 }

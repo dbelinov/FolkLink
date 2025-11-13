@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FolkLink.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateOwnerMemberandClubtables : Migration
+    public partial class AddModelsAfterIdentityChange : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,8 @@ namespace FolkLink.Data.Migrations
                 name: "Clubs",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     MemberCapacity = table.Column<int>(type: "int", nullable: false),
@@ -50,6 +51,27 @@ namespace FolkLink.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    ClubId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Groups_Clubs_ClubId",
+                        column: x => x.ClubId,
+                        principalTable: "Clubs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Members",
                 columns: table => new
                 {
@@ -60,7 +82,8 @@ namespace FolkLink.Data.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClubId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ClubId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,6 +94,11 @@ namespace FolkLink.Data.Migrations
                         principalTable: "Clubs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Members_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -79,9 +107,19 @@ namespace FolkLink.Data.Migrations
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Groups_ClubId",
+                table: "Groups",
+                column: "ClubId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Members_ClubId",
                 table: "Members",
                 column: "ClubId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Members_GroupId",
+                table: "Members",
+                column: "GroupId");
         }
 
         /// <inheritdoc />
@@ -89,6 +127,9 @@ namespace FolkLink.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Members");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Clubs");

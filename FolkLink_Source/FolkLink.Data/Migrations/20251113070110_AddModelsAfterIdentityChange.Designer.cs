@@ -4,16 +4,19 @@ using FolkLink.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace FolkLink.Web.Data.Migrations
+namespace FolkLink.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251113070110_AddModelsAfterIdentityChange")]
+    partial class AddModelsAfterIdentityChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,6 +91,9 @@ namespace FolkLink.Web.Data.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -97,7 +103,7 @@ namespace FolkLink.Web.Data.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("GroupId")
+                    b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
@@ -116,6 +122,8 @@ namespace FolkLink.Web.Data.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClubId");
 
                     b.HasIndex("GroupId");
 
@@ -387,13 +395,17 @@ namespace FolkLink.Web.Data.Migrations
 
             modelBuilder.Entity("FolkLink.Data.Models.Member", b =>
                 {
-                    b.HasOne("FolkLink.Data.Models.Group", "Group")
-                        .WithMany("Members")
-                        .HasForeignKey("GroupId")
+                    b.HasOne("FolkLink.Data.Models.Club", "Club")
+                        .WithMany()
+                        .HasForeignKey("ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Group");
+                    b.HasOne("FolkLink.Data.Models.Group", null)
+                        .WithMany("Members")
+                        .HasForeignKey("GroupId");
+
+                    b.Navigation("Club");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

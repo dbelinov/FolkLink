@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FolkLink.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251109183908_Create Owner, Member and Club tables")]
-    partial class CreateOwnerMemberandClubtables
+    [Migration("20251113070309_FixMemberLogicForGroupsClubs")]
+    partial class FixMemberLogicForGroupsClubs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,11 @@ namespace FolkLink.Data.Migrations
 
             modelBuilder.Entity("FolkLink.Data.Models.Club", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -54,6 +56,32 @@ namespace FolkLink.Data.Migrations
                     b.ToTable("Clubs");
                 });
 
+            modelBuilder.Entity("FolkLink.Data.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClubId");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("FolkLink.Data.Models.Member", b =>
                 {
                     b.Property<Guid>("Id")
@@ -63,9 +91,6 @@ namespace FolkLink.Data.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ClubId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -74,6 +99,9 @@ namespace FolkLink.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -92,7 +120,7 @@ namespace FolkLink.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClubId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Members");
                 });
@@ -349,15 +377,26 @@ namespace FolkLink.Data.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("FolkLink.Data.Models.Member", b =>
+            modelBuilder.Entity("FolkLink.Data.Models.Group", b =>
                 {
                     b.HasOne("FolkLink.Data.Models.Club", "Club")
-                        .WithMany("Members")
+                        .WithMany("Groups")
                         .HasForeignKey("ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Club");
+                });
+
+            modelBuilder.Entity("FolkLink.Data.Models.Member", b =>
+                {
+                    b.HasOne("FolkLink.Data.Models.Group", "Group")
+                        .WithMany("Members")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -412,6 +451,11 @@ namespace FolkLink.Data.Migrations
                 });
 
             modelBuilder.Entity("FolkLink.Data.Models.Club", b =>
+                {
+                    b.Navigation("Groups");
+                });
+
+            modelBuilder.Entity("FolkLink.Data.Models.Group", b =>
                 {
                     b.Navigation("Members");
                 });

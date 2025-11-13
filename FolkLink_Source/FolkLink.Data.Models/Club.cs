@@ -8,11 +8,10 @@ public class Club
 {
     public Club()
     {
-        Members = new HashSet<Member>();
+        Groups = new HashSet<Group>();
     }
-    
-    [Required]
-    public Guid Id { get; set; }
+    [Key]
+    public int Id { get; set; }
     
     [Required]
     [MaxLength(NameMaxLength)]
@@ -33,5 +32,5 @@ public class Club
     [ForeignKey(nameof(OwnerId))]
     public Owner Owner { get; set; }
     
-    public ICollection<Member> Members { get; set; }
+    public ICollection<Group> Groups { get; set; }
 }
